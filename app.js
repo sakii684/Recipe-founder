@@ -117,9 +117,42 @@ const recipes = [
 let enteredIngredients = [];
 let shoppingCart = [];
 
+// List of possible ingredients for suggestions
+const allIngredients = [
+    'spaghetti', 'ground beef', 'onion', 'garlic', 'tomato sauce', 'bell pepper', 'broccoli', 'carrot', 'soy sauce',
+    'chicken', 'curry powder', 'coconut milk', 'tomato', 'tortillas', 'lettuce', 'cheese', 'salsa', 'romaine lettuce',
+    'croutons', 'parmesan cheese', 'Caesar dressing', 'rice noodles', 'shrimp', 'peanuts', 'bean sprouts', 'pie crust',
+    'eggs', 'cream', 'bacon', 'milk', 'pepper'
+];
+
+// Event listener for the ingredient input
+document.getElementById('ingredient-input').addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        let ingredient = event.target.value.trim().toLowerCase(); // Convert input to lowercase
+        if (ingredient && !enteredIngredients.includes(ingredient)) {
+            enteredIngredients.push(ingredient);
+            displayIngredients();
+            displayRecipes();
+            event.target.value = ''; // Clear input field
+        }
+    }
+});
+
+// Add event listener for the enter button
+document.getElementById('enter-button').addEventListener('click', () => {
+    let ingredient = document.getElementById('ingredient-input').value.trim().toLowerCase(); // Convert input to lowercase
+    if (ingredient && !enteredIngredients.includes(ingredient)) {
+        enteredIngredients.push(ingredient);
+        displayIngredients();
+        displayRecipes();
+        document.getElementById('ingredient-input').value = ''; // Clear input field
+    }
+});
+
 function displayIngredients() {
     const ingredientList = document.getElementById('ingredient-list');
     ingredientList.innerHTML = '';
+   
     enteredIngredients.forEach(ingredient => {
         const item = document.createElement('div');
         item.className = 'ingredient-item';
@@ -209,30 +242,59 @@ function clearCart() {
     displayCart();
 }
 
-document.getElementById('ingredient-input').addEventListener('keypress', event => {
-    if (event.key === 'Enter') {
-        const ingredient = event.target.value.trim();
-        if (ingredient && !enteredIngredients.includes(ingredient)) {
-            enteredIngredients.push(ingredient);
-            displayIngredients();
-            displayRecipes();
-            event.target.value = '';
-        }
-    }
+// Automation suggestions start
+document.getElementById('ingredient-input').addEventListener('input', (event) => {
+    let input = event.target.value.toLowerCase().trim();
+    showSuggestions(input);
 });
-// add enter button
-document.getElementById('enter-button').addEventListener('click', () => {
-    const ingredient = document.getElementById('ingredient-input').value.trim();
-    if (ingredient && !enteredIngredients.includes(ingredient)) {
-        enteredIngredients.push(ingredient);
-        displayIngredients();
-        displayRecipes();
-        document.getElementById('ingredient-input').value = ''; // Clear input field
+
+function showSuggestions(input) {
+    const suggestionsList = document.getElementById('suggestions-list');
+    suggestionsList.innerHTML = ''; // Clear previous suggestions
+
+    if (input === '') return;
+
+    const matchedIngredients = allIngredients.filter(ingredient =>
+        ingredient.toLowerCase().startsWith(input)
+    );
+
+    if (matchedIngredients.length > 0) {
+        suggestionsList.style.display = 'block'; // Show suggestions
+    } else {
+        suggestionsList.style.display = 'none'; // Hide suggestions if no matches
+    }
+
+    matchedIngredients.forEach(ingredient => {
+        const suggestionItem = document.createElement('div');
+        suggestionItem.className = 'suggestion-item';
+        suggestionItem.textContent = ingredient;
+
+        // Add click event to select the suggestion
+        suggestionItem.addEventListener('click', () => {
+            document.getElementById('ingredient-input').value = ingredient;
+            addIngredient(ingredient);
+            suggestionsList.innerHTML = ''; // Clear suggestions
+            suggestionsList.style.display = 'none'; // Hide suggestions after selection
+        });
+
+        suggestionsList.appendChild(suggestionItem);
+    });
+}
+
+// Hide suggestions on click outside
+document.addEventListener('click', (e) => {
+    const suggestionsList = document.getElementById('suggestions-list');
+    if (!suggestionsList.contains(e.target) && e.target !== document.getElementById('ingredient-input')) {
+        suggestionsList.style.display = 'none';
     }
 });
 
+// Event listeners for buttons and filters
 document.getElementById('cuisine-filter').addEventListener('change', displayRecipes);
 document.getElementById('clear-cart').addEventListener('click', clearCart);
 
+// Initial display
 displayIngredients();
 displayCart();
+
+

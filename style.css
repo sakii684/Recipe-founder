@@ -12,13 +12,6 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-}
-
-.container {
-    width: 80%;
-    max-width: 800px;
-    text-align: center;
-    animation: fadeIn 1s ease; 
 } */
 body {
     font-family: 'Arial', sans-serif;
@@ -41,6 +34,14 @@ body {
     background: #ffffff; /* White background */
     animation: fadeIn 1s ease;
     text-align: center;
+}
+/* .container {
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+    animation: fadeIn 1s ease;
+} */
+ 
 
 
 @keyframes fadeIn {
@@ -264,7 +265,9 @@ ul#cart-items li a:hover {
     transition: transform 0.2s ease;
 }
 /*  */
-/* Add this to your existing CSS file */
+/* Existing styles... */
+
+/* Button Style for Enter Button */
 #enter-button {
     background-color: #4CAF50;
     color: white;
@@ -274,15 +277,16 @@ ul#cart-items li a:hover {
     cursor: pointer;
     font-size: 0.9rem;
     margin-left: 10px; /* Space between input and button */
-    transition: background-color 0.3s ease; /* Smooth color transition */
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Added transform transition */
 }
 
 #enter-button:hover {
     background-color: #45a049; /* Darker green on hover */
 }
-/* animation */
+
+/* Animation on button press */
 #enter-button:active {
-    transform: scale(1.95); /* Scale down on press */
+    transform: scale(1.25); /* Scale down on press */
 }
 
 /* Responsive adjustments */
@@ -292,3 +296,59 @@ ul#cart-items li a:hover {
         margin-bottom: 10px; /* Add some space below on small screens */
     }
 }
+/*  */
+#suggestions-list {
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    width: auto;
+    /* background-color: #ffffff; */
+    background-color: (255, 0, 0, 0.5);
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    transition: opacity 0.2s ease;
+    
+}
+
+/*  */
+.suggestion-item {
+    padding: 12px 16px;
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s, padding-left 0.2s;
+}
+
+.suggestion-item:hover {
+    background-color: #f1f3f4;
+    padding-left: 20px;
+}
+
+/* Style for the highlighted (active) suggestion */
+.suggestion-item.active {
+    background-color: #e8f0fe;
+    color: #1a73e8;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
