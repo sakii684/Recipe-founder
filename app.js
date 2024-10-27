@@ -220,6 +220,16 @@ document.getElementById('ingredient-input').addEventListener('keypress', event =
         }
     }
 });
+// add enter button
+document.getElementById('enter-button').addEventListener('click', () => {
+    const ingredient = document.getElementById('ingredient-input').value.trim();
+    if (ingredient && !enteredIngredients.includes(ingredient)) {
+        enteredIngredients.push(ingredient);
+        displayIngredients();
+        displayRecipes();
+        document.getElementById('ingredient-input').value = ''; // Clear input field
+    }
+});
 
 document.getElementById('cuisine-filter').addEventListener('change', displayRecipes);
 document.getElementById('clear-cart').addEventListener('click', clearCart);

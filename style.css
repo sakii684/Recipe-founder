@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-body {
+/* body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     color: #333;
@@ -18,8 +18,30 @@ body {
     width: 80%;
     max-width: 800px;
     text-align: center;
-    animation: fadeIn 1s ease;
+    animation: fadeIn 1s ease; 
+} */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; /* White background */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
+.container {
+    max-width: 80%;
+    
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    background: #ffffff; /* White background */
+    animation: fadeIn 1s ease;
+    text-align: center;
+
 
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -240,4 +262,33 @@ ul#cart-items li a:hover {
 .recipe-item:hover .recipe-details-section {
     transform: scale(1.02);
     transition: transform 0.2s ease;
+}
+/*  */
+/* Add this to your existing CSS file */
+#enter-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-left: 10px; /* Space between input and button */
+    transition: background-color 0.3s ease; /* Smooth color transition */
+}
+
+#enter-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+/* animation */
+#enter-button:active {
+    transform: scale(1.95); /* Scale down on press */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #ingredient-input {
+        width: calc(100% - 120px); /* Adjust for button width */
+        margin-bottom: 10px; /* Add some space below on small screens */
+    }
 }
