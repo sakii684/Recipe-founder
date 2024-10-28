@@ -233,47 +233,7 @@ function displayRecipes() {
     });
 }
 
-// function displayRecipes() {
-//     const recipeResults = document.getElementById('recipe-results');
-//     const selectedCuisine = document.getElementById('cuisine-filter').value;
-//     recipeResults.innerHTML = '';
 
-//     recipes.forEach(recipe => {
-//         const matchingIngredients = recipe.ingredients.map(ing => ing.name).filter(ing => enteredIngredients.includes(ing));
-//         const missingIngredients = recipe.ingredients.map(ing => ing.name).filter(ing => !enteredIngredients.includes(ing));
-
-//         if (matchingIngredients.length > 0 && (selectedCuisine === '' || recipe.cuisine === selectedCuisine)) {
-//             const recipeDiv = document.createElement('div');
-//             recipeDiv.className = 'recipe-item';
-
-    
-//             const recipeImage = document.createElement('img');
-//             recipeImage.src = recipe.image;
-//             recipeImage.alt = recipe.name;
-//             recipeImage.className = 'recipe-image';
-
-//             const recipeInfo = document.createElement('div');
-//             recipeInfo.className = 'recipe-info';
-//             recipeInfo.innerHTML = `
-//                 <h3>${recipe.name}</h3>
-//                 <p><strong>Cuisine:</strong> ${recipe.cuisine}</p>
-//                 <p><strong>Prep Time:</strong> ${recipe.prepTime}</p>
-//                 <p><strong>Instructions:</strong> ${recipe.instructions}</p>
-//                 <p><strong>Missing Ingredients:</strong> ${missingIngredients.length > 0 ? missingIngredients.join(', ') : 'None'}</p>
-//             `;
-
-//             const addButton = document.createElement('button');
-//             addButton.textContent = 'Add Missing to Cart';
-//             addButton.className = 'add-to-cart-button';
-//             addButton.onclick = () => addToCart(missingIngredients);
-
-//             recipeDiv.appendChild(recipeImage);
-//             recipeDiv.appendChild(recipeInfo);
-//             recipeDiv.appendChild(addButton);
-//             recipeResults.appendChild(recipeDiv);
-//         }
-//     });
-// }
 
 function addToCart(missingIngredients) {
     missingIngredients.forEach(ingredient => {
