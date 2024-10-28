@@ -1,4 +1,4 @@
-* {
+/* * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -26,7 +26,6 @@ body {
 }
 .container {
     max-width: 80%;
-    
     margin: auto;
     padding: 20px;
     border-radius: 8px;
@@ -107,28 +106,6 @@ h1 {
     justify-content: center;
 }
 
-.recipe-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    width: 250px;
-    border-radius: 8px;
-    text-align: left;
-    position: relative;
-    transition: transform 0.3s ease;
-    animation: recipeFadeIn 0.5s ease;
-}
-
-@keyframes recipeFadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-.recipe-item:hover {
-    transform: scale(1.05);
-    border-color: #4CAF50;
-    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
-}
 
 .recipe-item img {
     width: 100%;
@@ -142,7 +119,7 @@ h1 {
     transform: scale(1.02);
 }
 
-.recipe-info {
+/* .recipe-info {
     margin-top: 10px;
     color: #333;
 }
@@ -162,7 +139,77 @@ h1 {
 .add-to-cart-button:hover {
     background-color: #45a049;
     transform: translateY(-2px);
+} */
+ /* Recipe Info */
+.recipe-info {
+    margin-top: 15px;
+    color: #333;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
+
+.recipe-info h3 {
+    color: #4CAF50;
+    margin: 0;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.recipe-info p {
+    margin: 0;
+    padding: 5px 0;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Description and other details on back */
+.card-back .recipe-description {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.card-back .recipe-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 0.85rem;
+    color: #444;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.recipe-details span {
+    display: block;
+    padding: 2px 0;
+}
+
+/* Add to Cart Button - Placed at bottom */
+.add-to-cart {
+    display: block;
+    margin: 15px auto 0;
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+}
+
+.add-to-cart:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
 
 #cart-items {
     list-style-type: none;
@@ -348,6 +395,199 @@ ul#cart-items li a:hover {
 
 
 
+/* extra 2 */
+/* Recipe cards */
+/* .recipe-item {
+    perspective: 1000px;
+    width: 300px;
+    margin: 20px;
+    display: inline-block;
+} */
+.recipe-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    width: 250px;
+    border-radius: 8px;
+    /* text-align: left; */
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
+    animation: recipeFadeIn 0.5s ease;
+    perspective: 1000px; /* Adds perspective for 3D effect */
+}
+
+@keyframes recipeFadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.recipe-item:hover {
+    
+    transform: scale(1.05);
+    border-color: #4CAF50;
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
+/* 1 */
+.card {
+    width: 100%;
+    height: 150px;
+    position: relative;
+    transform-style: preserve-3d;
+    /* transform-style:flat; */
+    transform: rotateY(0);
+    transition: transform 0.6s ease;
+    cursor: pointer;
+    /* display: flex;
+    justify-content: space-around; */
+    margin-right: 50%;
+    
+   
+
+}
+.card.flipped {
+    transform: rotateY(180deg);
+}
+ /* 1 */
+.recipe-card {
+    width: 100%;
+    height: 350px;
+    position: relative;
+    transform-style: preserve-3d;
+    /* transform-style:flat; */
+    transform: rotateY(0);
+    transition: transform 0.6s ease;
+
+    cursor: pointer;
+    
+    
+}
+
+.recipe-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-front {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2; 
+    justify-content: center;
+}
+
+.card-front h3 {
+    margin-top: 15px;
+    font-size: 1.4em;
+    color: #333;
+ }
+ 
+
+/* .card-back h3 {
+    margin-top: 15px;
+    font-size: 1.4em;
+    color: #333;
+}  */
+
+.card-back {
+    background-color: #f8f8f8c5; ;
+    color: #333;
+    padding: 20px;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+   
+}
+
+.recipe-image {s
+    width: 80%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Recipe card details */
+.recipe-info p {
+    margin: 8px 0;
+}
+
+/* .add-to-cart-button {
+    background-color: #ff9f43;
+    border: none;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.add-to-cart-button:hover {
+    background-color: #ff6f00;
+} */
+.add-to-cart {
+    display: block;
+    margin: 10px 0;
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+/* Shopping cart styling */
+/* #cart-items {
+    margin-top: 20px;
+} */
+
+#cart-items {
+    list-style-type: none;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-width: 300px;
+    margin: 20px auto;
+    transition: opacity 0.3s ease;
+}
+
+#cart-items li {
+    margin: 5px 0;
+}
+
+#clear-cart {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+#clear-cart:hover {
+    background-color: #d32f2f;
+}
 
 
 

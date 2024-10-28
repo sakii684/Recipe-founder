@@ -174,40 +174,106 @@ function displayRecipes() {
     recipeResults.innerHTML = '';
 
     recipes.forEach(recipe => {
-        const matchingIngredients = recipe.ingredients.map(ing => ing.name).filter(ing => enteredIngredients.includes(ing));
-        const missingIngredients = recipe.ingredients.map(ing => ing.name).filter(ing => !enteredIngredients.includes(ing));
+        const matchingIngredients = recipe.ingredients
+            .map(ing => ing.name)
+            .filter(ing => enteredIngredients.includes(ing));
+        const missingIngredients = recipe.ingredients
+            .map(ing => ing.name)
+            .filter(ing => !enteredIngredients.includes(ing));
 
         if (matchingIngredients.length > 0 && (selectedCuisine === '' || recipe.cuisine === selectedCuisine)) {
             const recipeDiv = document.createElement('div');
             recipeDiv.className = 'recipe-item';
 
+            // Create flip card structure
+            const recipeCard = document.createElement('div');
+            recipeCard.className = 'recipe-card';
+
+            // Front side of card
+            const cardFront = document.createElement('div');
+            cardFront.className = 'card-front';
             const recipeImage = document.createElement('img');
             recipeImage.src = recipe.image;
             recipeImage.alt = recipe.name;
             recipeImage.className = 'recipe-image';
+            const recipeName = document.createElement('h3');
+            recipeName.textContent = recipe.name;
+            cardFront.appendChild(recipeImage);
+            cardFront.appendChild(recipeName);
 
-            const recipeInfo = document.createElement('div');
-            recipeInfo.className = 'recipe-info';
-            recipeInfo.innerHTML = `
-                <h3>${recipe.name}</h3>
-                <p><strong>Cuisine:</strong> ${recipe.cuisine}</p>
-                <p><strong>Prep Time:</strong> ${recipe.prepTime}</p>
-                <p><strong>Instructions:</strong> ${recipe.instructions}</p>
-                <p><strong>Missing Ingredients:</strong> ${missingIngredients.length > 0 ? missingIngredients.join(', ') : 'None'}</p>
-            `;
-
+            // Back side of card
+            const cardBack = document.createElement('div');
+            cardBack.className = 'card-back';
+            const ingredients = document.createElement('p');
+            ingredients.textContent = `Ingredients: ${recipe.ingredients.map(ing => ing.name).join(', ')}`;
+            const instructions = document.createElement('p');
+            instructions.textContent = `Instructions: ${recipe.instructions}`;
             const addButton = document.createElement('button');
             addButton.textContent = 'Add Missing to Cart';
-            addButton.className = 'add-to-cart-button';
-            addButton.onclick = () => addToCart(missingIngredients);
+            addButton.className = 'add-to-cart';
+            addButton.onclick = (e) => {
+                e.stopPropagation();
+                addToCart(missingIngredients);
+            };
+            cardBack.appendChild(ingredients);
+            cardBack.appendChild(instructions);
+            cardBack.appendChild(addButton);
 
-            recipeDiv.appendChild(recipeImage);
-            recipeDiv.appendChild(recipeInfo);
-            recipeDiv.appendChild(addButton);
+            // Assemble card
+            recipeCard.appendChild(cardFront);
+            recipeCard.appendChild(cardBack);
+            recipeDiv.appendChild(recipeCard);
             recipeResults.appendChild(recipeDiv);
+
+            // Flip card event listener
+            recipeDiv.addEventListener('click', () => {
+                recipeCard.classList.toggle('flipped');
+            });
         }
     });
 }
+
+// function displayRecipes() {
+//     const recipeResults = document.getElementById('recipe-results');
+//     const selectedCuisine = document.getElementById('cuisine-filter').value;
+//     recipeResults.innerHTML = '';
+
+//     recipes.forEach(recipe => {
+//         const matchingIngredients = recipe.ingredients.map(ing => ing.name).filter(ing => enteredIngredients.includes(ing));
+//         const missingIngredients = recipe.ingredients.map(ing => ing.name).filter(ing => !enteredIngredients.includes(ing));
+
+//         if (matchingIngredients.length > 0 && (selectedCuisine === '' || recipe.cuisine === selectedCuisine)) {
+//             const recipeDiv = document.createElement('div');
+//             recipeDiv.className = 'recipe-item';
+
+    
+//             const recipeImage = document.createElement('img');
+//             recipeImage.src = recipe.image;
+//             recipeImage.alt = recipe.name;
+//             recipeImage.className = 'recipe-image';
+
+//             const recipeInfo = document.createElement('div');
+//             recipeInfo.className = 'recipe-info';
+//             recipeInfo.innerHTML = `
+//                 <h3>${recipe.name}</h3>
+//                 <p><strong>Cuisine:</strong> ${recipe.cuisine}</p>
+//                 <p><strong>Prep Time:</strong> ${recipe.prepTime}</p>
+//                 <p><strong>Instructions:</strong> ${recipe.instructions}</p>
+//                 <p><strong>Missing Ingredients:</strong> ${missingIngredients.length > 0 ? missingIngredients.join(', ') : 'None'}</p>
+//             `;
+
+//             const addButton = document.createElement('button');
+//             addButton.textContent = 'Add Missing to Cart';
+//             addButton.className = 'add-to-cart-button';
+//             addButton.onclick = () => addToCart(missingIngredients);
+
+//             recipeDiv.appendChild(recipeImage);
+//             recipeDiv.appendChild(recipeInfo);
+//             recipeDiv.appendChild(addButton);
+//             recipeResults.appendChild(recipeDiv);
+//         }
+//     });
+// }
 
 function addToCart(missingIngredients) {
     missingIngredients.forEach(ingredient => {
@@ -288,6 +354,16 @@ document.addEventListener('click', (e) => {
         suggestionsList.style.display = 'none';
     }
 });
+// extra1
+
+document.querySelectorAll('.recipe-item').forEach(item => {
+    item.addEventListener('click', () => {
+        item.querySelector('.recipe-card').classList.toggle('flipped');
+    });
+});
+
+// 1
+
 
 // Event listeners for buttons and filters
 document.getElementById('cuisine-filter').addEventListener('change', displayRecipes);
