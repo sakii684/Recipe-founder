@@ -192,22 +192,33 @@ function displayRecipes() {
             // Front side of card
             const cardFront = document.createElement('div');
             cardFront.className = 'card-front';
+            
             const recipeImage = document.createElement('img');
             recipeImage.src = recipe.image;
             recipeImage.alt = recipe.name;
             recipeImage.className = 'recipe-image';
             const recipeName = document.createElement('h3');
+            recipeName.className = 'recipe-name';
             recipeName.textContent = recipe.name;
+            const recipeCuisine = document.createElement('strong');
+            recipeCuisine.textContent ="Cuisine: " + recipe.cuisine;
+            const recipePrep = document.createElement('strong');
+            recipePrep.textContent = " Prep Time: " +recipe.prepTime;
             cardFront.appendChild(recipeImage);
             cardFront.appendChild(recipeName);
+            cardFront.appendChild(recipeCuisine);
+            cardFront.appendChild(recipePrep);
+
 
             // Back side of card
             const cardBack = document.createElement('div');
-            cardBack.className = 'card-back';
-            const ingredients = document.createElement('p');
-            ingredients.textContent = `Ingredients: ${recipe.ingredients.map(ing => ing.name).join(', ')}`;
-            const instructions = document.createElement('p');
-            instructions.textContent = `Instructions: ${recipe.instructions}`;
+            cardBack.className = 'card-back'; 
+            const cardContent = document.createElement('div');
+            cardContent.className = 'card-Content';
+            cardContent.innerHTML = `
+            <p><strong>Instructions:</strong> ${recipe.instructions}</p>
+            <p><strong>Missing Ingredients:</strong> ${missingIngredients.length > 0 ? missingIngredients.join(', ') : 'None'}</p>
+            `; 
             const addButton = document.createElement('button');
             addButton.textContent = 'Add Missing to Cart';
             addButton.className = 'add-to-cart';
@@ -215,8 +226,7 @@ function displayRecipes() {
                 e.stopPropagation();
                 addToCart(missingIngredients);
             };
-            cardBack.appendChild(ingredients);
-            cardBack.appendChild(instructions);
+            cardBack.appendChild(cardContent)
             cardBack.appendChild(addButton);
 
             // Assemble card
@@ -314,7 +324,8 @@ document.addEventListener('click', (e) => {
         suggestionsList.style.display = 'none';
     }
 });
-// extra1
+// flliiped
+
 
 document.querySelectorAll('.recipe-item').forEach(item => {
     item.addEventListener('click', () => {
