@@ -455,8 +455,96 @@ body {
 }
 
 #clear-cart:hover {
+
     background-color: #d32f2f;
 }
+/*  */
+.progress-bar-container {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: #4caf50;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    line-height: 20px;
+    transition: width 0.3s ease-in-out;
+}
+
+/* .progress-bar-container {
+    width: 80%;
+    background-color: #e0e0e0;
+    border-radius: 9px;
+    margin:  15px 0 ;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    height: 20px;
+    background: linear-gradient(90deg, #4caf50, #66bb6a);
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    line-height: 20px;
+    transition: width 0.4s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    animation: progressBarExpand 0.6s ease-out; 
+} */
+/*
+.progress-bar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 0.3;
+    animation: shimmer 2s infinite;
+}
+
+.progress-bar-text {
+    position: relative;
+    z-index: 1;
+    animation: textPulse 1.5s ease-in-out infinite;
+}
+
+/* Keyframes for smooth expanding effect 
+@keyframes progressBarExpand {
+    from {
+        width: 0;
+    }
+    to {
+        width: var(--width);
+    }
+}
+
+/* Keyframes for shimmer effect 
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Keyframes for pulsing text 
+@keyframes textPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+ */
+
+
+
 
 
 

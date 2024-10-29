@@ -167,7 +167,7 @@ function removeIngredient(ingredient) {
     displayIngredients();
     displayRecipes();
 }
-
+// added
 function displayRecipes() {
     const recipeResults = document.getElementById('recipe-results');
     const selectedCuisine = document.getElementById('cuisine-filter').value;
@@ -180,6 +180,7 @@ function displayRecipes() {
         const missingIngredients = recipe.ingredients
             .map(ing => ing.name)
             .filter(ing => !enteredIngredients.includes(ing));
+        const matchPercentage = Math.floor((matchingIngredients.length / recipe.ingredients.length) * 100);
 
         if (matchingIngredients.length > 0 && (selectedCuisine === '' || recipe.cuisine === selectedCuisine)) {
             const recipeDiv = document.createElement('div');
@@ -192,7 +193,7 @@ function displayRecipes() {
             // Front side of card
             const cardFront = document.createElement('div');
             cardFront.className = 'card-front';
-            
+
             const recipeImage = document.createElement('img');
             recipeImage.src = recipe.image;
             recipeImage.alt = recipe.name;
@@ -201,35 +202,44 @@ function displayRecipes() {
             recipeName.className = 'recipe-name';
             recipeName.textContent = recipe.name;
             const recipeCuisine = document.createElement('strong');
-            recipeCuisine.textContent ="Cuisine: " + recipe.cuisine;
+            recipeCuisine.textContent = "Cuisine: " + recipe.cuisine;
             const recipePrep = document.createElement('strong');
-            recipePrep.textContent = " Prep Time: " +recipe.prepTime;
+            recipePrep.textContent = "Prep Time: " + recipe.prepTime;
+
+            // Progress Indicator
+            const progressBarContainer = document.createElement('div');
+            progressBarContainer.className = 'progress-bar-container';
+            const progressBar = document.createElement('div');
+            progressBar.className = 'progress-bar';
+            progressBar.style.width = `${matchPercentage}%`;
+            
+
+            progressBar.textContent = `${matchPercentage}% Match...`;
+            progressBarContainer.appendChild(progressBar);
+
             cardFront.appendChild(recipeImage);
             cardFront.appendChild(recipeName);
             cardFront.appendChild(recipeCuisine);
             cardFront.appendChild(recipePrep);
-
+            cardFront.appendChild(progressBarContainer);
 
             // Back side of card
             const cardBack = document.createElement('div');
-            cardBack.className = 'card-back'; 
-            const cardContent = document.createElement('div');
-            cardContent.className = 'card-Content';
-            cardContent.innerHTML = `
-            <p><strong>Instructions:</strong> ${recipe.instructions}</p>
-            <p><strong>Missing Ingredients:</strong> ${missingIngredients.length > 0 ? missingIngredients.join(', ') : 'None'}</p>
-            `; 
+            cardBack.className = 'card-back';
+            cardBack.innerHTML = `
+                <p><strong>Instructions:</strong> ${recipe.instructions}</p>
+                <p><strong>Missing Ingredients:</strong> ${missingIngredients.length > 0 ? missingIngredients.join(', ') : 'None'}</p>
+            `;
+
             const addButton = document.createElement('button');
-            addButton.textContent = 'Add Missing to Cart';
+           addButton.textContent = 'Add Missing to Cart';
             addButton.className = 'add-to-cart';
             addButton.onclick = (e) => {
                 e.stopPropagation();
                 addToCart(missingIngredients);
             };
-            cardBack.appendChild(cardContent)
             cardBack.appendChild(addButton);
 
-            // Assemble card
             recipeCard.appendChild(cardFront);
             recipeCard.appendChild(cardBack);
             recipeDiv.appendChild(recipeCard);
@@ -242,6 +252,90 @@ function displayRecipes() {
         }
     });
 }
+
+// added
+
+
+
+// function displayRecipes() {
+//     const recipeResults = document.getElementById('recipe-results');
+//     const selectedCuisine = document.getElementById('cuisine-filter').value;
+//     recipeResults.innerHTML = '';
+
+//     recipes.forEach(recipe => {
+//         const matchingIngredients = recipe.ingredients
+//             .map(ing => ing.name)
+//             .filter(ing => enteredIngredients.includes(ing));
+//         const missingIngredients = recipe.ingredients
+//             .map(ing => ing.name)
+//             .filter(ing => !enteredIngredients.includes(ing));
+
+//         if (matchingIngredients.length > 0 && (selectedCuisine === '' || recipe.cuisine === selectedCuisine)) {
+//             const recipeDiv = document.createElement('div');
+//             recipeDiv.className = 'recipe-item';
+
+//             // Create flip card structure
+//             const recipeCard = document.createElement('div');
+//             recipeCard.className = 'recipe-card';
+
+//             // Front side of card
+//             const cardFront = document.createElement('div');
+//             cardFront.className = 'card-front';
+            
+//             const recipeImage = document.createElement('img');
+//             recipeImage.src = recipe.image;
+//             recipeImage.alt = recipe.name;
+//             recipeImage.className = 'recipe-image';
+//             const recipeName = document.createElement('h3');
+//             recipeName.className = 'recipe-name';
+//             recipeName.textContent = recipe.name;
+//             const recipeCuisine = document.createElement('strong');
+//             recipeCuisine.textContent ="Cuisine: " + recipe.cuisine;
+//             const recipePrep = document.createElement('strong');
+//             recipePrep.textContent = " Prep Time: " +recipe.prepTime;
+//             cardFront.appendChild(recipeImage);
+//             cardFront.appendChild(recipeName);
+//             cardFront.appendChild(recipeCuisine);
+//             cardFront.appendChild(recipePrep);
+
+            
+
+//             //Back side of card
+//             const cardBack = document.createElement('div');
+//             cardBack.className = 'card-back'; 
+//             const cardContent = document.createElement('div');
+//             cardContent.className = 'card-Content';
+//             cardContent.innerHTML = `
+//             <p><strong>Instructions:</strong> ${recipe.instructions}</p>
+//             <p><strong>Missing Ingredients:</strong> ${missingIngredients.length > 0 ? missingIngredients.join(', ') : 'None'}</p>
+//             `; 
+//             const addButton = document.createElement('button');
+//             addButton.textContent = 'Add Missing to Cart';
+//             addButton.className = 'add-to-cart';
+//             addButton.onclick = (e) => {
+//                 e.stopPropagation();
+//                 addToCart(missingIngredients);
+//             };
+
+            
+//             cardBack.appendChild(cardContent)
+//             cardBack.appendChild(addButton);
+
+//             // Assemble card
+//             recipeCard.appendChild(cardFront);
+//             recipeCard.appendChild(cardBack);
+//             recipeDiv.appendChild(recipeCard);
+//             recipeResults.appendChild(recipeDiv);
+
+//             // Flip card event listener
+//             recipeDiv.addEventListener('click', () => {
+//                 recipeCard.classList.toggle('flipped');
+//             });
+//         }
+//     });
+// }
+
+
 
 
 
@@ -343,5 +437,6 @@ document.getElementById('clear-cart').addEventListener('click', clearCart);
 // Initial display
 displayIngredients();
 displayCart();
+
 
 
