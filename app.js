@@ -110,7 +110,163 @@ const recipes = [
         image: 'Omellet.jpg',
         cuisine: 'Asian',
         prepTime: '15 mins'
+    },
+
+    // extra recipies added
+    {
+        name: "Butter Chicken",
+        ingredients: [
+            { name: "Chicken", category: "Meat" },
+            { name: "Butter", category: "Dairy" },
+            { name: "Tomato puree", category: "Vegetables" },
+            { name: "Cream", category: "Dairy" },
+            { name: "Garam masala", category: "Spices" },
+            { name: "Onions", category: "Vegetables" },
+            { name: "Garlic", category: "Vegetables" },
+            { name: "Ginger", category: "Vegetables" }
+        ],
+        instructions: "Marinate chicken in yogurt and spices. Cook onions, garlic, and ginger in butter, add tomato puree, and simmer. Add marinated chicken, cook until tender, and finish with cream.",
+        image: "butterchicken.jpg",
+        cuisine: 'Indian',
+        prepTime: "1 hr"
+    },
+    {
+        name: "Palak Paneer",
+        cuisine: "Indian",
+        prepTime: "30 mins",
+        ingredients: [
+            { name: "Spinach", category: "Vegetables" },
+            { name: "Paneer", category: "Dairy" },
+            { name: "Onions", category: "Vegetables" },
+            { name: "Garlic", category: "Vegetables" },
+            { name: "Ginger", category: "Vegetables" },
+            { name: "Cream", category: "Dairy" },
+            { name: "Spices", category: "Spices" }
+        ],
+        instructions: "Blanch spinach and blend into a puree. Cook onions, garlic, and ginger, add spices, and stir in spinach and paneer. Finish with cream.",
+        image: "PalakPaneer.jpg"
+    },
+    {
+        name: "Chicken Biryani",
+        cuisine: "Indian",
+        prepTime: "1.5 hrs",
+        ingredients: [
+            { name: "Basmati rice", category: "Grains" },
+            { name: "Chicken ", category: "Meats" },
+            { name: "Onions", category: "Vegetables" },
+            { name: "Tomatoes", category: "Vegetables" },
+            { name: "Yogurt", category: "Dairy" },
+            { name: "Spices", category: "Spices" },
+            { name: "Mint", category: "Herbs" }
+        ],
+        instructions: "Marinate meat with yogurt and spices. Fry onions, add meat, tomatoes, and cook. Layer with partially cooked rice, add water, and cook on low heat until rice is done.",
+        image: "ChickenBiryani.jpg"
+    },
+    {
+        name: "Chole Bhature",
+        cuisine: "Indian",
+        prepTime: "1 hr",
+        ingredients: [
+            { name: "Chickpeas", category: "Legumes" },
+            { name: "Onions", category: "Vegetables" },
+            { name: "Tomatoes", category: "Vegetables" },
+            { name: "Spices", category: "Spices" },
+            { name: "Flour", category: "Grains" },
+            { name: "Yogurt", category: "Dairy" },
+            { name: "Sugar", category: "Condiments" }
+        ],
+        instructions: "Soak chickpeas overnight, cook with spices and tomatoes. For bhature, knead dough with flour and yogurt, roll out and deep fry until golden.",
+        image: "CholeBhature.jpg"
+    },
+    {
+        name: "Samosa",
+        cuisine: "Indian",
+        prepTime: "1 hr",
+        ingredients: [
+            { name: "Potatoes", category: "Vegetables" },
+            { name: "Peas", category: "Vegetables" },
+            { name: "Spices", category: "Spices" },
+            { name: "Flour", category: "Grains" },
+            { name: "Oil", category: "Fats" }
+        ],
+        instructions: "Boil and mash potatoes, mix with peas and spices. Make dough with flour, roll out, fill with potato mixture, and deep fry until golden.",
+        image: "Samosa.jpg"
+    },
+    {
+        name: "Aloo Gobi",
+        cuisine: "Indian",
+        prepTime: "30 mins",
+        ingredients: [
+            { name: "Potatoes", category: "Vegetables" },
+            { name: "Cauliflower", category: "Vegetables" },
+            { name: "Onions", category: "Vegetables" },
+            { name: "Spices", category: "Spices" },
+            { name: "Cilantro", category: "Herbs" }
+        ],
+        instructions: "Fry onions and spices, add potatoes and cauliflower. Cook until tender and garnish with cilantro.",
+        image: "AlooGobi.jpg"
+    },
+    {
+        name: "Tandoori Chicken",
+        cuisine: "Indian",
+        prepTime: "2 hrs (including marination)",
+        ingredients: [
+            { name: "Chicken", category: "Meats" },
+            { name: "Yogurt", category: "Dairy" },
+            { name: "Tandoori masala", category: "Spices" },
+            { name: "Lemon juice", category: "Fruits" },
+            { name: "Garlic", category: "Vegetables" },
+            { name: "Ginger", category: "Vegetables" }
+        ],
+        instructions: "Marinate chicken in yogurt, tandoori masala, and spices for a few hours. Grill until cooked through.",
+        image: "TandooriChicken.jpg"
+    },
+    {
+        name: "Pav Bhaji",
+        cuisine: "Indian",
+        prepTime: "30 mins",
+        ingredients: [
+            { name: "Mixed vegetables", category: "Vegetables" },
+            { name: "Onions", category: "Vegetables" },
+            { name: "Tomatoes", category: "Vegetables" },
+            { name: "Butter", category: "Dairy" },
+            { name: "Pav bhaji masala", category: "Spices" },
+            { name: "Bread rolls", category: "Grains" }
+        ],
+        instructions: "Boil and mash vegetables. Cook onions and tomatoes, add spices and butter. Serve with buttered bread rolls.",
+        image: "PavBhaji.jpg"
+    },
+    {
+        name: "Daal Makhani",
+        cuisine: "Indian",
+        prepTime: "1 hr",
+        ingredients: [
+            { name: "Black lentils", category: "Legumes" },
+            { name: "Butter", category: "Dairy" },
+            { name: "Cream", category: "Dairy" },
+            { name: "Tomatoes", category: "Vegetables" },
+            { name: "Spices", category: "Spices" }
+        ],
+        instructions: "Soak lentils overnight. Cook lentils with tomatoes and spices, finish with butter and cream.",
+        image: "DaalMakhani.jpg"
+    },
+    {
+        name: "Pani Puri",
+        cuisine: "Indian",
+        prepTime: "45 mins",
+        ingredients: [
+            { name: "Semolina", category: "Grains" },
+            { name: "Potatoes", category: "Vegetables" },
+            { name: "Chickpeas", category: "Legumes" },
+            { name: "Pani Puri masala", category: "Spices" },
+            { name: "Tamarind", category: "Fruits" },
+            { name: "Spices", category: "Spices" }
+        ],
+        instructions: "Make puris from semolina, deep fry until puffed. Prepare filling with mashed potatoes and chickpeas, serve with spicy tamarind water.",
+        image: "PaniPuri.jpg"
     }
+       
+    
 ];
 
 
@@ -119,10 +275,25 @@ let shoppingCart = [];
 
 // List of possible ingredients for suggestions
 const allIngredients = [
-    'spaghetti', 'ground beef', 'onion', 'garlic', 'tomato sauce', 'bell pepper', 'broccoli', 'carrot', 'soy sauce',
-    'chicken', 'curry powder', 'coconut milk', 'tomato', 'tortillas', 'lettuce', 'cheese', 'salsa', 'romaine lettuce',
-    'croutons', 'parmesan cheese', 'Caesar dressing', 'rice noodles', 'shrimp', 'peanuts', 'bean sprouts', 'pie crust',
-    'eggs', 'cream', 'bacon', 'milk', 'pepper'
+    'spaghetti', 'ground beef', 'onion', 'garlic', 'tomato sauce',
+    'bell pepper', 'broccoli', 'carrot', 'soy sauce',
+    'chicken', 'curry powder', 'coconut milk', 'tomato',
+    'tortillas', 'lettuce', 'cheese', 'salsa',
+    'romaine lettuce', 'croutons', 'parmesan cheese', 'Caesar dressing',
+    'rice noodles', 'shrimp', 'peanuts', 'bean sprouts',
+    'pie crust', 'eggs', 'cream', 'bacon',
+    'milk', 'pepper',
+    'butter', 'tomato puree', 'garam masala', 'ginger',
+    'spinach', 'paneer', 'spices',
+    'basmati rice', 'mint',
+    'chickpeas', 'flour', 'sugar',
+    'potatoes', 'peas', 'oil',
+    'cauliflower', 'cilantro',
+    'tandoori masala', 'lemon juice',
+    'mixed vegetables', 'pav bhaji masala', 'bread rolls',
+    'black lentils',
+    'semolina', 'pani puri masala', 'tamarind',"Yogurt"
+    
 ];
 
 // Event listener for the ingredient input
@@ -167,7 +338,6 @@ function removeIngredient(ingredient) {
     displayIngredients();
     displayRecipes();
 }
-// added
 function displayRecipes() {
     const recipeResults = document.getElementById('recipe-results');
     const selectedCuisine = document.getElementById('cuisine-filter').value;
@@ -175,13 +345,19 @@ function displayRecipes() {
 
     recipes.forEach(recipe => {
         const matchingIngredients = recipe.ingredients
-            .map(ing => ing.name)
+            .map(ing => ing.name.toLowerCase()) // Ensure ingredient names are compared in lower case
             .filter(ing => enteredIngredients.includes(ing));
+        
         const missingIngredients = recipe.ingredients
-            .map(ing => ing.name)
+            .map(ing => ing.name.toLowerCase())
             .filter(ing => !enteredIngredients.includes(ing));
+        
         const matchPercentage = Math.floor((matchingIngredients.length / recipe.ingredients.length) * 100);
 
+        // Debugging information
+        console.log(`Recipe: ${recipe.name}, Matching: ${matchingIngredients.length}, Missing: ${missingIngredients.length}`);
+
+        // Check if any matching ingredients are found and if cuisine matches
         if (matchingIngredients.length > 0 && (selectedCuisine === '' || recipe.cuisine === selectedCuisine)) {
             const recipeDiv = document.createElement('div');
             recipeDiv.className = 'recipe-item';
@@ -212,8 +388,6 @@ function displayRecipes() {
             const progressBar = document.createElement('div');
             progressBar.className = 'progress-bar';
             progressBar.style.width = `${matchPercentage}%`;
-            
-
             progressBar.textContent = `${matchPercentage}% Match...`;
             progressBarContainer.appendChild(progressBar);
 
@@ -232,7 +406,7 @@ function displayRecipes() {
             `;
 
             const addButton = document.createElement('button');
-           addButton.textContent = 'Add Missing to Cart';
+            addButton.textContent = 'Add Missing to Cart';
             addButton.className = 'add-to-cart';
             addButton.onclick = (e) => {
                 e.stopPropagation();
@@ -253,10 +427,8 @@ function displayRecipes() {
     });
 }
 
+
 // added
-
-
-
 // function displayRecipes() {
 //     const recipeResults = document.getElementById('recipe-results');
 //     const selectedCuisine = document.getElementById('cuisine-filter').value;
@@ -269,6 +441,7 @@ function displayRecipes() {
 //         const missingIngredients = recipe.ingredients
 //             .map(ing => ing.name)
 //             .filter(ing => !enteredIngredients.includes(ing));
+//         const matchPercentage = Math.floor((matchingIngredients.length / recipe.ingredients.length) * 100);
 
 //         if (matchingIngredients.length > 0 && (selectedCuisine === '' || recipe.cuisine === selectedCuisine)) {
 //             const recipeDiv = document.createElement('div');
@@ -281,7 +454,7 @@ function displayRecipes() {
 //             // Front side of card
 //             const cardFront = document.createElement('div');
 //             cardFront.className = 'card-front';
-            
+
 //             const recipeImage = document.createElement('img');
 //             recipeImage.src = recipe.image;
 //             recipeImage.alt = recipe.name;
@@ -290,42 +463,49 @@ function displayRecipes() {
 //             recipeName.className = 'recipe-name';
 //             recipeName.textContent = recipe.name;
 //             const recipeCuisine = document.createElement('strong');
-//             recipeCuisine.textContent ="Cuisine: " + recipe.cuisine;
+//             recipeCuisine.textContent = "Cuisine: " + recipe.cuisine;
 //             const recipePrep = document.createElement('strong');
-//             recipePrep.textContent = " Prep Time: " +recipe.prepTime;
+//             recipePrep.textContent = "Prep Time: " + recipe.prepTime;
+
+//             // Progress Indicator
+//             const progressBarContainer = document.createElement('div');
+//             progressBarContainer.className = 'progress-bar-container';
+//             const progressBar = document.createElement('div');
+//             progressBar.className = 'progress-bar';
+//             progressBar.style.width = `${matchPercentage}%`;
+            
+
+//             progressBar.textContent = `${matchPercentage}% Match...`;
+//             progressBarContainer.appendChild(progressBar);
+
 //             cardFront.appendChild(recipeImage);
 //             cardFront.appendChild(recipeName);
 //             cardFront.appendChild(recipeCuisine);
 //             cardFront.appendChild(recipePrep);
+//             cardFront.appendChild(progressBarContainer);
 
-            
-
-//             //Back side of card
+//             // Back side of card
 //             const cardBack = document.createElement('div');
-//             cardBack.className = 'card-back'; 
-//             const cardContent = document.createElement('div');
-//             cardContent.className = 'card-Content';
-//             cardContent.innerHTML = `
-//             <p><strong>Instructions:</strong> ${recipe.instructions}</p>
-//             <p><strong>Missing Ingredients:</strong> ${missingIngredients.length > 0 ? missingIngredients.join(', ') : 'None'}</p>
-//             `; 
+//             cardBack.className = 'card-back';
+//             cardBack.innerHTML = `
+//                 <p><strong>Instructions:</strong> ${recipe.instructions}</p>
+//                 <p><strong>Missing Ingredients:</strong> ${missingIngredients.length > 0 ? missingIngredients.join(', ') : 'None'}</p>
+//             `;
+
 //             const addButton = document.createElement('button');
-//             addButton.textContent = 'Add Missing to Cart';
+//            addButton.textContent = 'Add Missing to Cart';
 //             addButton.className = 'add-to-cart';
 //             addButton.onclick = (e) => {
 //                 e.stopPropagation();
 //                 addToCart(missingIngredients);
 //             };
-
-            
-//             cardBack.appendChild(cardContent)
 //             cardBack.appendChild(addButton);
 
-//             // Assemble card
 //             recipeCard.appendChild(cardFront);
 //             recipeCard.appendChild(cardBack);
 //             recipeDiv.appendChild(recipeCard);
 //             recipeResults.appendChild(recipeDiv);
+            
 
 //             // Flip card event listener
 //             recipeDiv.addEventListener('click', () => {
@@ -335,8 +515,7 @@ function displayRecipes() {
 //     });
 // }
 
-
-
+// cart function
 
 
 function addToCart(missingIngredients) {
@@ -358,7 +537,7 @@ function displayCart() {
         shoppingCart.forEach(item => {
             const cartItem = document.createElement('li');
             const amazonLink = document.createElement('a');
-            amazonLink.href = `https://www.amazon.com/s?k=${encodeURIComponent(item)}`;
+            amazonLink.href = `https://www.amazon.in/s?k=${encodeURIComponent(item)}`;
             amazonLink.target = '_blank';
             amazonLink.textContent = item;
             cartItem.appendChild(amazonLink);
@@ -435,6 +614,7 @@ document.getElementById('cuisine-filter').addEventListener('change', displayReci
 document.getElementById('clear-cart').addEventListener('click', clearCart);
 
 // Initial display
+displayRecipes();
 displayIngredients();
 displayCart();
 
