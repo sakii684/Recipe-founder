@@ -319,6 +319,7 @@ document.getElementById('enter-button').addEventListener('click', () => {
         document.getElementById('ingredient-input').value = ''; // Clear input field
     }
 });
+// ingredients display
 
 function displayIngredients() {
     const ingredientList = document.getElementById('ingredient-list');
@@ -332,12 +333,16 @@ function displayIngredients() {
         ingredientList.appendChild(item);
     });
 }
+// remove ingredient
 
 function removeIngredient(ingredient) {
     enteredIngredients = enteredIngredients.filter(item => item !== ingredient);
     displayIngredients();
     displayRecipes();
 }
+
+// function recipies display
+
 function displayRecipes() {
     const recipeResults = document.getElementById('recipe-results');
     const selectedCuisine = document.getElementById('cuisine-filter').value;
